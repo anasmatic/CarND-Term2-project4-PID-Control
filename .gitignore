@@ -4,3 +4,12 @@ tags
 .editorconfig
 install-mac.sh
 *.sh
+*.db
+.vs/PID-Control/v15/Browse.VC.opendb
+*.json
+.vs/slnx.sqlite
+*.trec
+*.lnk
+PID-Control.sln
+*.filters
+PID-Control.vcxproj

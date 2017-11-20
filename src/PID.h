@@ -41,6 +41,14 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+  
+  double twiddle(double tol = 0.2);
+  double run(double cte, double params[], int n = 100, double speed = 1.0);
+
+private :
+	bool is_initialized = false;
+	double p[3];
+	double dp[3];
 };
 
 #endif /* PID_H */

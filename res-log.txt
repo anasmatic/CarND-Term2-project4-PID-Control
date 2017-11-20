@@ -1,0 +1,43 @@
+build cmds
+1: cmake .. -G "Unix Makefiles" && make
+2: ./pid
+
+kp=0.05, ki=0, kd=-0.5
+kp 0.05 turn good , but crash on second turn
+kp 0.1 truns late and turns too slow
+kp 0.025 better, but turn late & slow
+kp 0.035 better, but similer to 0.025
+kp 0.04 better, but crash on second turn
+kp 0.045 better bearly pass 2nd term, but still turn late
+
+changing kd to 0.5
+kp=0.045, ki=0, kd=0.5
+kd=0.5 can't pass turn 1 ! late turn and swings hard
+kd=0 passed turn 1 but swing hard, crashed on bridge
+kd=-1 swing less , but still late turn, crashed on 2nd turn
+kd=-2 passed project , steer on time hard steering, but no swings at all
+build version a01
+
+changing kp to 0.05
+kp 0.05 do not feel better, and crash on turn 2
+
+changing kp to 0.1, kd=-2.0
+kp=0.1, ki=0, kd=-2.0
+passed project , steer hard on time, no swings
+build version a02
+
+comparing a01(kp=0.045,ki=0,kd=-2),a02(kp=0.1,ki=0,kd=-2)
+a02 is better, car stays in center when straight
+and also in curves it is not getting close to edges
+but in booth stearing is hard, beeds smoothing
+
+after couple of trials using prevoius logic, I'll stop at :
+kp=0.15,ki=0,kd=-3.0
+
+now I'll tune ki
+ki=10 constant hard left turn, crash
+ki=1 , .1 ,0.001, same 
+nigative -0.0001 is good
+but keep it 0
+
+next : build twaddle
