@@ -41,14 +41,28 @@ I was using Windows 10 and VisualStudio17
 #### Results and comments
 
 1. while twiddle is running, the car will swing, but eventually it will stop after twiddle is done.
-   ![twiddle00](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t00.gif)
+   
+   *gif animation :*
+   
+   ![twiddle state gif](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/blob/master/res/t00.gif)
+   
     [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t00.mp4)
 2. but after twiddle is done car can take curves successfuly :
-   ![twiddle01](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t01.gif)
-    [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t01.mp4)
-   * these images are taken from diffrent testing sessions.
-   ![twiddle02](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t02.gif)
-    [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t02.mp4)
+   
+   *gif animation :*
+   
+   ![after twiddle gif 01](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/blob/master/res/t01.gif)
+   
+   [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t01.mp4)
+   
+   
+   these images are taken from diffrent testing sessions.
+   
+   *gif animation :*
+   
+   ![after twiddle gif 02](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/blob/master/res/t02.gif)
+   
+   [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t02.mp4)
 
 
 3. I got only few comment , that if I can improve the PID controller will be perfect
