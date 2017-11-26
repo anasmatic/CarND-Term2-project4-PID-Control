@@ -28,6 +28,8 @@ I was using Windows 10 and VisualStudio17
    * in every step we update p & i & d Errors.
    * and then calculate Total Error, it is the sum of paramters and their errors multiplied.
 2. now we tune the Kp, Ki, Kd parameters using [these instructions](https://udacity-reviews-uploads.s3.amazonaws.com/_attachments/41330/1493863065/pid_control_document.pdf#%5B%7B%22num%22%3A37%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C56.7%2C785.3%2C0%5D)
+   * Kp decides how fast the car will stear to correct its course, the less the faster.
+   * Kd decides how much the car will swing after stearing is done, the more , the dry streaing is.
 3. now we build the twiddle algorithm 
    * I'll use the same implementation in lesson
    * using boolean flags, I'll decide which part will be active during the current loop
