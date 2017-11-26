@@ -38,7 +38,7 @@ I was using Windows 10 and VisualStudio17
    * initialize pd array to [1,0,15] , I decided these values after trial and error.
    * I choose to twiddle every 5 steps, to auto-tune on fly without restarting simulator.
 
-#### Results and comments
+#### Results
 
 1. while twiddle is running, the car will swing, but eventually it will stop after twiddle is done.
    
@@ -64,8 +64,10 @@ I was using Windows 10 and VisualStudio17
    
    [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t02.mp4)
 
+---
 
-3. I got only few comment , that if I can improve the PID controller will be perfect
+#### comments
+I got only few comment , that if I can improve the PID controller will be perfect
    * start with p=[0,0,0] & pd=[1,1,1]
    * drive succesfuly with throttle more than 0.4
    * use more steps between twiddle steps -now using 5 steps-
