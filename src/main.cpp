@@ -131,7 +131,6 @@ int main(int argc, char *argv[])
 							if (count == n) {//do this step if only #n step has passed
 								best_err = err;//save it as initial best_error
 								err = 1000;//reset new_error
-								std::cout << " 1 - best_err:" << best_err << " vs err:" << err << std::endl;
 							}
 							//now we twiddle until sum_pd > tolerance
 							else if (count > n && count % n == 0) {//do this step if only #n step has passed
@@ -185,11 +184,11 @@ int main(int argc, char *argv[])
 						}//else just update stearing using the same Kp Ki Kd, we should be stable now with good error
 						else {
 							isUsingTwiddle = false;
-							std::cout << " Twiddle Stopped" << p[0] << "," << p[1] << "," << p[2] << std::endl;
+							std::cout << "_______ Twiddle Stopped" << p[0] << "," << p[1] << "," << p[2] << std::endl;
 						}
 					}
 
-					//std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
+					std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
 					json msgJson;
 					msgJson["steering_angle"] = steer_value;
