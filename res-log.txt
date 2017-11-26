@@ -41,3 +41,39 @@ nigative -0.0001 is good
 but keep it 0
 
 next : build twaddle
+
+after lots of trials: car is able to drive save if twaddle was init with thses values
+t = 0.7, n = 30
+p = 0.3 0 10 , pd = 0.1 0 1
+p is very similer to actual values
+
+also working with :
+t = 0.7, n = 5
+p = 0.02 0 10 , pd = 0.1 0 1
+
+also working with :
+t = 0.7, n = 5
+p = 0 0 10 , pd = 0.1 0 1
+
+t = 0.7, n = 5
+p = 0 0 1 , pd = 0.1 0 1
+
+t = 0.1, n = 5
+p = 0 0 1 , pd = 0.1 0 1 
+=== 0.787 0 8.908
+
+t=0.1, n=5, s=0.4
+p=0 0 0 , pd=0.1 0 1 
+=== 0.900 0 9.828
+
+t=0.1, n=5, s=0.4
+p=0 0 0 , pd=0.1 0 1 
+=== 
+
+t=0.1, n=10, s=0.4
+p=0 0 0 , pd=1 0 15 
+=== 3.11 0 82.15
+
+t=0.1, n=5, s=0.4
+p=0 0 0 , pd=1 0 15 
+=== 2.79 0 31.5

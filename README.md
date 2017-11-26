@@ -1,98 +1,56 @@
-# CarND-Controls-PID
+# CarND : Controls PID Project
 Self-Driving Car Engineer Nanodegree Program
 
+In this project, I decide the stearing angle of simulator's car stearing wheel , using PID controller and Twiddle (coordinate ascent)
+
 ---
+#### default project installation :
+1. mkdir build
+2. cd build
+3. cmake ..
+4. make
+5. ./pid 
 
-## Dependencies
+#### my own Build Instructions
+I was using Windows 10 and VisualStudio17
 
-* cmake >= 3.5
- * All OSes: [click here for installation instructions](https://cmake.org/install/)
-* make >= 4.1(mac, linux), 3.81(Windows)
-  * Linux: make is installed by default on most Linux distros
-  * Mac: [install Xcode command line tools to get make](https://developer.apple.com/xcode/features/)
-  * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
-* gcc/g++ >= 5.4
-  * Linux: gcc / g++ is installed by default on most Linux distros
-  * Mac: same deal as make - [install Xcode command line tools]((https://developer.apple.com/xcode/features/)
-  * Windows: recommend using [MinGW](http://www.mingw.org/)
-* [uWebSockets](https://github.com/uWebSockets/uWebSockets)
-  * Run either `./install-mac.sh` or `./install-ubuntu.sh`.
-  * If you install from source, checkout to commit `e94b6e1`, i.e.
-    ```
-    git clone https://github.com/uWebSockets/uWebSockets 
-    cd uWebSockets
-    git checkout e94b6e1
-    ```
-    Some function signatures have changed in v0.14.x. See [this PR](https://github.com/udacity/CarND-MPC-Project/pull/3) for more details.
-* Simulator. You can download these from the [project intro page](https://github.com/udacity/self-driving-car-sim/releases) in the classroom.
+-to build this project using **Bash for window** :
 
-There's an experimental patch for windows in this [PR](https://github.com/udacity/CarND-PID-Control-Project/pull/3)
+    navigate to projet
+    write cmd : mkdir build
+    then navigate to build
+    write cmd : cmake .. -G "Unix Makefiles" && make
+    write cmd : ./pid 
 
-## Basic Build Instructions
+#### PID initial code, manual tuning, & Twiddle
 
-1. Clone this repo.
-2. Make a build directory: `mkdir build && cd build`
-3. Compile: `cmake .. && make`
-4. Run it: `./pid`. 
+1. in class PID we fill the initial parameters Kp, Ki, Kd.
+   * in every step we update p & i & d Errors.
+   * and then calculate Total Error, it is the sum of paramters and their errors multiplied.
+2. now we tune the Kp, Ki, Kd parameters using [these instructions](https://udacity-reviews-uploads.s3.amazonaws.com/_attachments/41330/1493863065/pid_control_document.pdf#%5B%7B%22num%22%3A37%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C56.7%2C785.3%2C0%5D)
+3. now we build the twiddle algorithm 
+   * I'll use the same implementation in lesson
+   * using boolean flags, I'll decide which part will be active during the current loop
+   * using p array as the [kp, ki, kd] , and pd array as a helper to tune p array
+   * initialize kp ki kd, to the manually tuned parameters [0.12,0,3]
+   * initialize pd array to [1,0,15] , I decided these values after trial and error.
+   * I choose to twiddle every 5 steps, to auto-tune on fly without restarting simulator.
 
-Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
+#### Results and comments
 
-## Editor Settings
+1. while twiddle is running, the car will swing, but eventually it will stop after twiddle is done.
+   ![twiddle00](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t00.gif)
+    [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t00.mp4)
+2. but after twiddle is done car can take curves successfuly :
+   ![twiddle01](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t01.gif)
+    [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t01.mp4)
+   * these images are taken from diffrent testing sessions.
+   ![twiddle02](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t02.gif)
+    [alternative vid](https://github.com/anasmatic/CarND-Term2-project4-PID-Control/tree/master/res/t02.mp4)
 
-We've purposefully kept editor configuration files out of this repo in order to
-keep it as simple and environment agnostic as possible. However, we recommend
-using the following settings:
 
-* indent using spaces
-* set tab width to 2 spaces (keeps the matrices in source code aligned)
-
-## Code Style
-
-Please (do your best to) stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
-
-## Project Instructions and Rubric
-
-Note: regardless of the changes you make, your project must be buildable using
-cmake and make!
-
-More information is only accessible by people who are already enrolled in Term 2
-of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/e8235395-22dd-4b87-88e0-d108c5e5bbf4/concepts/6a4d8d42-6a04-4aa6-b284-1697c0fd6562)
-for instructions and the project rubric.
-
-## Hints!
-
-* You don't have to follow this directory structure, but if you do, your work
-  will span all of the .cpp files here. Keep an eye out for TODOs.
-
-## Call for IDE Profiles Pull Requests
-
-Help your fellow students!
-
-We decided to create Makefiles with cmake to keep this project as platform
-agnostic as possible. Similarly, we omitted IDE profiles in order to we ensure
-that students don't feel pressured to use one IDE or another.
-
-However! I'd love to help people get up and running with their IDEs of choice.
-If you've created a profile for an IDE that you think other students would
-appreciate, we'd love to have you add the requisite profile files and
-instructions to ide_profiles/. For example if you wanted to add a VS Code
-profile, you'd add:
-
-* /ide_profiles/vscode/.vscode
-* /ide_profiles/vscode/README.md
-
-The README should explain what the profile does, how to take advantage of it,
-and how to install it.
-
-Frankly, I've never been involved in a project with multiple IDE profiles
-before. I believe the best way to handle this would be to keep them out of the
-repo root to avoid clutter. My expectation is that most profiles will include
-instructions to copy files to a new location to get picked up by the IDE, but
-that's just a guess.
-
-One last note here: regardless of the IDE used, every submitted project must
-still be compilable with cmake and make./
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+3. I got only few comment , that if I can improve the PID controller will be perfect
+   * start with p=[0,0,0] & pd=[1,1,1]
+   * drive succesfuly with throttle more than 0.4
+   * use more steps between twiddle steps -now using 5 steps-
 
