@@ -1,7 +1,7 @@
 # CarND : Controls PID Project
 Self-Driving Car Engineer Nanodegree Program
 
-In this project, I decide the stearing angle of simulator's car stearing wheel , using PID controller and Twiddle (coordinate ascent)
+In this project, I decide the steering angle of simulator's car steering wheel , using PID controller and Twiddle (coordinate ascent)
 
 ---
 #### default project installation :
